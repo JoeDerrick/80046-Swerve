@@ -76,8 +76,9 @@ public class SwerveDrivetrain extends SubsystemBase {
   };
 
   public SwerveDrivetrain() {
-    _pidgey = new PigeonIMU(_pigeonTalon);
     gyro.reset();
+
+    _pidgey = new PigeonIMU(_pigeonTalon);
     _pidgey.configFactoryDefault();
     _pidgey.setYaw(0,kTimeoutMs);
     _pidgey.setAccumZAngle(0,kTimeoutMs);

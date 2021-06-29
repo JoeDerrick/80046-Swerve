@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.util.Units;
 public class SwerveModuleMK3 {
 
   // TODO: Tune these PID values for your robot
+  // Should we establish unique values for each module?
   private static final double kDriveP = 15.0;
   private static final double kDriveI = 0.01;
   private static final double kDriveD = 0.1;
@@ -42,7 +43,11 @@ public class SwerveModuleMK3 {
     angleTalonFXConfiguration.slot0.kI = kAngleI;
     angleTalonFXConfiguration.slot0.kD = kAngleD;
 
+
+
+    
     // Use the CANCoder as the remote sensor for the primary TalonFX PID
+    
     angleTalonFXConfiguration.remoteFilter0.remoteSensorDeviceID = canCoder.getDeviceID();
     angleTalonFXConfiguration.remoteFilter0.remoteSensorSource = RemoteSensorSource.CANCoder;
     angleTalonFXConfiguration.primaryPID.selectedFeedbackSensor = FeedbackDevice.RemoteSensor0;

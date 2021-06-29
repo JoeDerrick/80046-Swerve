@@ -9,6 +9,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.sensors.CANCoder;
 import com.ctre.phoenix.sensors.PigeonIMU;
 import com.ctre.phoenix.motorcontrol.*;
+import edu.wpi.first.wpilibj.Joystick;
+
 
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
@@ -23,8 +25,10 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   public static final double kMaxSpeed = Units.feetToMeters(13.6); // 13.6 feet per second
   public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
+
+  //-------Pigeon implementation----------------//move to line 71?
   PigeonIMU _pidgey;
-  TalonSRX _pigeonTalon = new TalonSRX(9);
+  TalonSRX _pigeonTalon = new TalonSRX(9); // added to support the pigeon, although maybe we should wire it into CAN
   
   int _axisSelection = 0; //!< [0,2] => [Yaw,Pitch,Roll]
   int _signalSelection = 0;  //!< [0,7] => What signal to print, see Instrum implem
@@ -32,6 +36,26 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   /* timeouts for certain blocking actions */
   final int kTimeoutMs = 50;
+
+  //--------End Pigeon------------------//
+
+  //---------Motor Tuning Implementation-------------//
+  Joystick _joy = new Joystick(0);
+    
+  /* String for output */
+  StringBuilder _sb = new StringBuilder();
+  
+  /* Loop tracker for prints */
+int _loops = 0;
+
+  //-----------End Motor Tuning Implementation---------//
+
+
+
+
+
+
+
 
   /**
    * TODO: These are example values and will need to be adjusted for your robot!
@@ -46,6 +70,8 @@ public class SwerveDrivetrain extends SubsystemBase {
    * https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html#constructing-the-kinematics-object
    */
   private SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
+
+  //------ Not sure why "10" is this an arbitrary value for width?----- jd - 6/28/21----//
     new Translation2d(
       Units.inchesToMeters(10),
       Units.inchesToMeters(10)
@@ -66,6 +92,7 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   private final AnalogGyro gyro = new AnalogGyro(0);
   
+  
   // TODO: Update these CAN device IDs to match your TalonFX + CANCoder device IDs
   // TODO: Update module offsets to match your CANCoder offsets
   private SwerveModuleMK3[] modules = new SwerveModuleMK3[] {
@@ -77,12 +104,14 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   public SwerveDrivetrain() {
     gyro.reset();
+    // attempt to setup pigeon for gyro heading JD-6/28/21----//
 
     _pidgey = new PigeonIMU(_pigeonTalon);
     _pidgey.configFactoryDefault();
     _pidgey.setYaw(0,kTimeoutMs);
     _pidgey.setAccumZAngle(0,kTimeoutMs);
-    //test
+
+    
   }
 
   /**
@@ -108,6 +137,12 @@ public class SwerveDrivetrain extends SubsystemBase {
   }
 
 //add fx tuning here
+
+public void motorTuning(){
+  
+}
+
+
 
   @Override
   public void periodic() {

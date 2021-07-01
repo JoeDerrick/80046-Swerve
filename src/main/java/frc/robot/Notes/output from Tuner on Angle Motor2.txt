@@ -1,0 +1,50 @@
+    Talon FX (Device ID 2)   |   CAN ID is 2
+Device enabled
+Motor Type: Brushless
+Mode:0:PercentOutput | Output:84.26% [10.15 V]
+Inverted: F  |  Drive Direction:counter-clockwise (positive).
+Coast during neutral
+VCompEn:F CurrLimited:F
+
+PID0 (primary)
+  Feedback: RemoteSensor0
+  Pos: 305991u   |   Vel: 2961u/100ms
+  Slot Select: 0
+  Err: -17 u   |   iacc: -56016 u-ms   |   derr: 0 u/ms
+
+PID1 (aux)
+  Feedback: Integrated Sensor
+  Pos: 1937712u   |   Vel: 18899u/100ms
+  Slot Select: 0
+  Err: 0 u   |   iacc: 0 u-ms   |   derr: 0 u/ms
+
+Limit Switches
+  Forward:Open
+  Reverse:Open
+
+Integrated Sensor
+  Position:1937712.000 units
+  Velocity:18899.000 units per 100ms
+  Absolute Position (unsigned):596.000 units
+  On power cycle, sensor position resets to zero.
+  Units Per Rotation: 2048
+
+Auto Zero Position Feature are disabled
+
+Faults
+                (Fault)         (Now)   (Sticky) 
+                API error:        0        1
+               Remote LOS:        0        1  Remote Sensor is missing on the bus.  Check the remote sensor, limit switch, soft limit source.
+ Neutral Brake Curr Limit:        0        1
+
+I-Supply: 1.27A   |   I-Stator: 1.51A   |   Bus: 12.05V    |    Device Temp: 31C    |    CPU Temp: 34C
+
+Configurations
+  Nominal Output: [0.00, 0.00]   |   Peak Output: [-1.00, 1.00]
+
+FRC Locked:1
+
+"Light Device LED" clears sticky faults.
+
+Build:Jan  8 2021 20:09:44
+Press "Refresh" to close.

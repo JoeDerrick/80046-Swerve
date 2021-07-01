@@ -28,7 +28,7 @@ public class SwerveDrivetrain extends SubsystemBase {
 
   //-------Pigeon implementation----------------//move to line 71?
   PigeonIMU _pidgey;
-  TalonSRX _pigeonTalon = new TalonSRX(9); // added to support the pigeon, although maybe we should wire it into CAN
+  TalonSRX _pigeonTalon = new TalonSRX(10); // added to support the pigeon, although maybe we should wire it into CAN
   
   int _axisSelection = 0; //!< [0,2] => [Yaw,Pitch,Roll]
   int _signalSelection = 0;  //!< [0,7] => What signal to print, see Instrum implem
@@ -96,10 +96,10 @@ int _loops = 0;
   // TODO: Update these CAN device IDs to match your TalonFX + CANCoder device IDs
   // TODO: Update module offsets to match your CANCoder offsets
   private SwerveModuleMK3[] modules = new SwerveModuleMK3[] {
-    new SwerveModuleMK3(new TalonFX(1), new TalonFX(2), new CANCoder(0), Rotation2d.fromDegrees(0)), // Front Left
-    new SwerveModuleMK3(new TalonFX(3), new TalonFX(4), new CANCoder(1), Rotation2d.fromDegrees(0)), // Front Right
-    new SwerveModuleMK3(new TalonFX(5), new TalonFX(6), new CANCoder(2), Rotation2d.fromDegrees(0)), // Back Left
-    new SwerveModuleMK3(new TalonFX(7), new TalonFX(8), new CANCoder(3), Rotation2d.fromDegrees(0))  // Back Right
+    new SwerveModuleMK3(new TalonFX(1), new TalonFX(2), new CANCoder(11), Rotation2d.fromDegrees(0)), // Front Left
+    new SwerveModuleMK3(new TalonFX(3), new TalonFX(4), new CANCoder(13), Rotation2d.fromDegrees(0)), // Front Right
+    new SwerveModuleMK3(new TalonFX(5), new TalonFX(6), new CANCoder(15), Rotation2d.fromDegrees(0)), // Back Left
+    new SwerveModuleMK3(new TalonFX(7), new TalonFX(8), new CANCoder(17), Rotation2d.fromDegrees(0))  // Back Right
   };
 
   public SwerveDrivetrain() {
@@ -136,17 +136,10 @@ int _loops = 0;
     }
   }
 
-//add fx tuning here
-
-public void motorTuning(){
-  
-}
-
-
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    // woud like to output angle for diagnoistics
   }
 
   @Override

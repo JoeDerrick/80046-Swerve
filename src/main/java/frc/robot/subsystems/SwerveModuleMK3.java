@@ -16,11 +16,10 @@ public class SwerveModuleMK3 {
 
   // TODO: Tune these PID values for your robot
   // Should we establish unique values for each module?
-  private static final double kDriveP = 15.0;
-  private static final double kDriveI = 0.01;
-  private static final double kDriveD = 0.1;
-  private static final double kDriveF = 0.2;
-
+  private static final double kDriveP = 15.0;//15.0
+  private static final double kDriveI = 0.01;//0.01
+  private static final double kDriveD = 0.1;//0.2
+  private static final double kDriveF = 0.2;// 0.2 //measured to be 0.03416 using pheonix tuner nd CTRE algorithm JD-6/30/21
   private static final double kAngleP = 1.0;
   private static final double kAngleI = 0.0;
   private static final double kAngleD = 0.0;
@@ -98,6 +97,8 @@ public class SwerveModuleMK3 {
 
     double feetPerSecond = Units.metersToFeet(state.speedMetersPerSecond);
     driveMotor.set(TalonFXControlMode.PercentOutput, feetPerSecond / SwerveDrivetrain.kMaxSpeed);
+    // why are we using percent output mode here instead of velocity mode? JD-6/30/21
+    // i guess open loop is fine for speed?
   }
 
 }

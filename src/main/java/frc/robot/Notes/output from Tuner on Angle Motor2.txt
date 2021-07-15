@@ -32,7 +32,7 @@ Integrated Sensor
 Auto Zero Position Feature are disabled
 
 Faults
-                (Fault)         (Now)   (Sticky) 
+                (Fault)         (Now)   (Sticky) //sticky faults?
                 API error:        0        1
                Remote LOS:        0        1  Remote Sensor is missing on the bus.  Check the remote sensor, limit switch, soft limit source.
  Neutral Brake Curr Limit:        0        1

@@ -50,13 +50,6 @@ int _loops = 0;
 
   //-----------End Motor Tuning Implementation---------//
 
-
-
-
-
-
-
-
   /**
    * TODO: These are example values and will need to be adjusted for your robot!
    * Modules are in the order of -
@@ -93,8 +86,8 @@ int _loops = 0;
   private final AnalogGyro gyro = new AnalogGyro(0);
   
   
-  // TODO: Update these CAN device IDs to match your TalonFX + CANCoder device IDs
-  // TODO: Update module offsets to match your CANCoder offsets
+  // DONE: Update these CAN device IDs to match your TalonFX + CANCoder device IDs
+  // TODO: Update module offsets to match your CANCoder offsets// what are these?
   private SwerveModuleMK3[] modules = new SwerveModuleMK3[] {
     new SwerveModuleMK3(new TalonFX(1), new TalonFX(2), new CANCoder(11), Rotation2d.fromDegrees(0)), // Front Left
     new SwerveModuleMK3(new TalonFX(3), new TalonFX(4), new CANCoder(13), Rotation2d.fromDegrees(0)), // Front Right
@@ -140,6 +133,7 @@ int _loops = 0;
   public void periodic() {
     // This method will be called once per scheduler run
     // woud like to output angle for diagnoistics
+      
   }
 
   @Override
